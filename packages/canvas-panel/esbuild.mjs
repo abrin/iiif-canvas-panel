@@ -39,7 +39,7 @@ esbuild.build({
   minify: process.argv.indexOf('--dev') === -1,
   sourcemap: true,
   target: ["chrome58"],
-  external: [],
+  external: ['@iiif/parser/image-3'],
   jsxFactory: 'h',
   jsxFragment: 'Fragment',
 

@@ -102,7 +102,7 @@ export const TiledImage = createAtlasWrapper<{
   displayName: 'Atlas.TiledImage',
   component: Atlas.TiledImage,
   customConstructor: (props) => {
-    return Atlas.TiledImage.fromTile(props.uri, props.display, props.tile, props.scaleFactor, undefined, props.format, props.useFloorCalc);
+    return Atlas.TiledImage.fromTile(props.uri, props.display, props.tile, props.scaleFactor, undefined, props.format);
   },
 });
 
