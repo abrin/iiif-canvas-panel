@@ -41,5 +41,6 @@ export type GenericAtlasComponent<T = Record<never, never>, Props = any> = T & {
   ignoreSingleFingerTouch?: boolean;
   requireMetaKeyForWheelZoom?: boolean;
   panOnWaitDelay?: number;
+  rotateFromWorldCenter?: boolean;
   __registerPublicApi?: (api: (host: HTMLElement) => Partial<Props>) => void;
 };

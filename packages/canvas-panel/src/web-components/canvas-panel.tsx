@@ -31,7 +31,8 @@ export type CanvasPanelProps = GenericAtlasComponent<
     followAnnotations?: boolean;
     iiifContent?: string;
     rotation?: number;
-    useFloorCalc?: 'true' | 'false' | boolean
+    useFloorCalc?: 'true' | 'false' | boolean;
+    rotateFromWorldCenter?: 'true' | 'false' | boolean;
   },
   UseRegisterPublicApi['properties']
 >;
@@ -49,6 +50,7 @@ const canvasPanelAttributes = [
   'home-cover',
   'rotation',
   'background',
+  'rotateFromWorldCenter',
 ];
 
 export const CanvasPanel: FC<CanvasPanelProps> = (props) => {
@@ -86,6 +88,14 @@ export const CanvasPanel: FC<CanvasPanelProps> = (props) => {
   });
   const [canvasId, setCanvasId, , canvasIdRef] = useProp('canvasId');
   const [rotation, setRotation, , rotationRef] = useProp('rotation', { parse: parseNumber, defaultValue: 0 });
+  const [rotateFromWorldCenter, setRotateFromWorldCenter, , rotateFromWorldCenterRef] = useProp(
+    'rotateFromWorldCenter',
+    {
+      parse: parseBool,
+      defaultValue: false,
+    }
+  );
+
   const [manifestId, setManifestId, , manifestIdRef] = useProp('manifestId');
   const [followAnnotations] = useProp('followAnnotations', { parse: parseBool, defaultValue: true });
   const [defaultChoices, , , defaultChoiceIdsRef] = useProp('choiceId', { parse: parseChoices });
@@ -333,6 +343,7 @@ export const CanvasPanel: FC<CanvasPanelProps> = (props) => {
         skipSizes={skipSizes}
         homeCover={homeCover}
         useFloorCalc={useFloorCalc}
+        rotateFromWorldCenter={rotateFromWorldCenter}
       >
         <slot name="atlas" />
         {contentStateCallback ? <DrawBox onCreate={onDrawBox} /> : null}

@@ -22,7 +22,7 @@ export function RenderTextFragment({
   }
 
   const body = (Array.isArray(annotation.body) ? annotation.body : [annotation.body]).filter(
-    (bodyItem) => (bodyItem as any).type === 'TextualBody'
+    (bodyItem: any) => (bodyItem as any).type === 'TextualBody'
   );
 
   const target = (annotation.target as any).selector as BoxSelector;

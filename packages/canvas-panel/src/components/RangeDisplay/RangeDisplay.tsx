@@ -45,7 +45,7 @@ export function RangeDisplay(props: {
     <Fragment>
       {selected ? <div className="range-current">{getValue(selected.label)}</div> : null}
 
-      {manifest.structures.map((range) => (
+      {manifest.structures.map((range: { id: string }) => (
         <RangeContext key={range.id} range={range.id}>
           <ViewRange selected={selected?.id} onRangeClick={props.onRangeClick} />
         </RangeContext>

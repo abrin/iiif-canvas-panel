@@ -44,7 +44,7 @@ export const RotateCanvas = () => {
   return <>
     <button onClick={()=>{setRotation((rotation + 90) % 360)}}>Rotate Canvas</button>
     {/* @ts-ignore */}
-    <canvas-panel manifest-id={welcome} canvas-id={canvases[0]} rotation={rotation} />
+    <canvas-panel manifest-id={welcome} canvas-id={canvases[0]} rotation={rotation} rotate-from-world-center="true" />
 
   </>
 }

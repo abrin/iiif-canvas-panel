@@ -97,7 +97,7 @@ export function RenderImage({
             {image.service &&
               virtualSizes.map((size) => {
                 if (image.service) {
-                  const [url, { height, width }] = getImageUrl(image.service, size);
+                  const [url, { height, width }] = getImageUrl(image.service as any, size);
 
                   if (!url) {
                     return null;

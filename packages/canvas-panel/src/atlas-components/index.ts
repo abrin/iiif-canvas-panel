@@ -9,7 +9,7 @@ export const World = createAtlasWrapper<{
   displayName: 'Atlas.World',
   component: Atlas.World,
   customConstructor: (props) => {
-    return new Atlas.World(props.width, props.height);
+    return new Atlas.World(props.width, props.height, undefined, undefined);
   },
 });
 
@@ -102,7 +102,15 @@ export const TiledImage = createAtlasWrapper<{
   displayName: 'Atlas.TiledImage',
   component: Atlas.TiledImage,
   customConstructor: (props) => {
-    return Atlas.TiledImage.fromTile(props.uri, props.display, props.tile, props.scaleFactor, undefined, props.format);
+    return Atlas.TiledImage.fromTile(
+      props.uri,
+      props.display,
+      props.tile,
+      props.scaleFactor,
+      undefined,
+      props.format,
+      props.useFloorCalc
+    );
   },
 });
 

@@ -8,8 +8,8 @@ import { RangeNormalized } from '@iiif/presentation-3';
 export function ViewRange(props: { selected?: string; onRangeClick?: (range: RangeNormalized, other: any) => void }) {
   const range = useRange();
   const vault = useVault();
-  const first = useMemo(() => range?.items.find((i) => i.type === 'Canvas'), [range]);
-  const hasSubsequentRanges = useMemo(() => !!range?.items.find((i) => i.type === 'Range'), [range]);
+  const first = useMemo(() => range?.items.find((i: { type: string }) => i.type === 'Canvas'), [range]);
+  const hasSubsequentRanges = useMemo(() => !!range?.items.find((i: { type: string }) => i.type === 'Range'), [range]);
   const selected = props.selected && props.selected === range?.id; // @todo how to get the selected?
 
   function onClick() {
@@ -69,7 +69,7 @@ export function ViewRange(props: { selected?: string; onRangeClick?: (range: Ran
       ) : null}
       {hasSubsequentRanges ? (
         <div className="range-nested-container">
-          {range.items.map((range) => {
+          {range.items.map((range: { type: string; id: string }) => {
             if (range.type === 'Canvas' || (range as any).type === 'SpecificResource' || !range.id) {
               return null;
             }

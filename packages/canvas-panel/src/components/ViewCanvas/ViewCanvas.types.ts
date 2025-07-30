@@ -38,4 +38,5 @@ export type ViewCanvasProps = {
   homeCover?: boolean | 'start' | 'end';
   rotation?: number;
   useFloorCalc?: boolean;
+  rotateFromWorldCenter?: boolean;
 };

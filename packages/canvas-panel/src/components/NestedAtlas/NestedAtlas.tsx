@@ -1,4 +1,4 @@
-import { Atlas, AtlasAuto, AtlasContext, AtlasProps, useAtlas } from '@atlas-viewer/atlas';
+import { AtlasAuto, useAtlas } from '@atlas-viewer/atlas';
 import { Fragment, h } from 'preact';
 import { createContext, useContext, useEffect, useState } from 'preact/compat';
 import { AtlasDisplayOptions } from '../ViewCanvas/ViewCanvas.types';
@@ -36,7 +36,7 @@ export function NestedAtlas({
       </>
     );
   }
-  
+
   return (
     <InAtlasContext.Provider value={true}>
       <AtlasAuto

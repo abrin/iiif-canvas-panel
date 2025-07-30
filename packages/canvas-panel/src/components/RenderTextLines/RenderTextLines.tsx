@@ -39,7 +39,7 @@ export function RenderTextLines({
             width={canvas.width}
             height={canvas.height}
           >
-            {page.items.map((annotation) => {
+            {page.items.map((annotation: { id: string }) => {
               return (
                 <RenderTextFragment
                   key={`line-${annotation.id}`}

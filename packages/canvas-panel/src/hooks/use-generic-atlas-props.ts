@@ -130,6 +130,12 @@ export function useGenericAtlasProps<T = Record<never, never>>(props: GenericAtl
 
   const [rotation, setRotation, , rotationRef] = useSyncedState(props.rotation, { parse: parseNumber });
 
+  const [rotateFromWorldCenter, setRotateFromWorldCenter, , rotateFromWorldCenterRef] = useSyncedState(props.rotateFromWorldCenter, {
+    parse: parseBool,
+    defaultValue: undefined,
+  });
+
+
   const [highlight, setHighlight, , highlightRef] = useSyncedState(props.highlight || internalConfig.highlight, {
     parse: parseOptionalSelector,
   });
@@ -491,6 +497,12 @@ export function useGenericAtlasProps<T = Record<never, never>>(props: GenericAtl
       setRotation: (newRotation: string | number) => {
         htmlComponent.setAttribute('rotation', newRotation.toString());
       },
+      getRotateFromWorldCenter: () => {
+        return rotateFromWorldCenterRef.current
+      },
+      setRotateFromWorldCenter:(newValue: string | boolean) => {
+        htmlComponent.setAttribute("rotateFromWorldCenter", newValue.toString());
+      },
       getHighlight: () => {
         return highlightRef.current;
       },
@@ -846,6 +858,7 @@ export function useGenericAtlasProps<T = Record<never, never>>(props: GenericAtl
               },
             ],
       width: width ? width : undefined,
+      rotateFromWorldCenter: rotateFromWorldCenter,
       height: height ? height : responsive ? undefined : 512,
       role: a11yRole,
       title: a11yTitle,
@@ -883,6 +896,7 @@ export function useGenericAtlasProps<T = Record<never, never>>(props: GenericAtl
     x,
     y,
     rotation,
+    rotateFromWorldCenter,
     homeCover,
     useProp,
     useRegisterWebComponentApi,
